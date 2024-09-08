@@ -1,9 +1,11 @@
 import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
-# docker-compose down --volumes
 
 
 class Settings(BaseSettings):
+    """
+    Settings class which reads .env file and converts all variables from it into the python variables.
+    """
     DB_HOST: str
     DB_PORT: int
     POSTGRES_DB: str
@@ -18,4 +20,4 @@ class Settings(BaseSettings):
     )
 
 
-settings = Settings()
+settings = Settings()  # settings object that can be imported into other modules to work with variables from .env file
