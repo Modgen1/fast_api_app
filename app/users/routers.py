@@ -10,8 +10,8 @@ reg_router = APIRouter(prefix='/api', tags=['Registration and login handling'])
 
 @reg_router.post('/register')
 async def register_user(user: SUser) -> dict:
-    user = await UsersDAO.find_by_username(user.username)
-    if not user:
+    check = await UsersDAO.find_by_username(user.username)
+    if not check:
         await UsersDAO.register(**user.model_dump())
         return {"message": "User successfully registered"}
     else:
