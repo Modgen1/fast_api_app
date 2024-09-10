@@ -26,3 +26,7 @@ async def login_user(user: SUser) -> dict:
         return {"message": "Logged in successfully", 'token': token}
     else:
         return {"message": "Username or password is incorrect"}
+
+@reg_router.get('/database')
+async def database():
+    return await UsersDAO.return_all()
