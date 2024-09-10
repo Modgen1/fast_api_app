@@ -5,7 +5,7 @@ from app.users.dao import UsersDAO
 from app.users.schemas import SUser
 from app.config import settings
 
-reg_router = APIRouter(prefix='', tags=['Registration and login handling'])
+reg_router = APIRouter(prefix='/api', tags=['Registration and login handling'])
 
 
 @reg_router.post('/register')
