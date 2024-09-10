@@ -7,7 +7,7 @@ from sqlalchemy.orm import DeclarativeBase, declared_attr, Mapped, mapped_column
 
 import redis
 
-from config import settings
+from app.config import settings
 
 # establishing a connection with redis for querying messages
 message_query = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, password=settings.REDIS_PASSWORD)
