@@ -5,10 +5,10 @@ from app.users.dao import UsersDAO
 from app.users.schemas import SUser
 from app.config import settings
 
-reg_router = APIRouter(prefix='/register', tags=['New user registration'])
+reg_router = APIRouter(prefix='', tags=['Registration and login handling'])
 
 
-@reg_router.post('/')
+@reg_router.post('/register')
 async def register_user(user: SUser) -> dict:
     user = await UsersDAO.find_by_username(user.username)
     if not user:
@@ -18,10 +18,7 @@ async def register_user(user: SUser) -> dict:
         return {"message": "Registration error"}
 
 
-login_router = APIRouter(prefix='/login', tags=['User log-in'])
-
-
-@login_router.post('/')
+@reg_router.post('/login')
 async def login_user(user: SUser) -> dict:
     check = await UsersDAO.find_by_username(user.username)
     if check and check.pass_hash == user.pass_hash:
