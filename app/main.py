@@ -1,9 +1,10 @@
 import uvicorn
 from fastapi import FastAPI
 import os
-os.chdir(os.path.dirname(os.path.abspath(__file__)))  # changing root directory from /app/ to /
+print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # changing root directory from /app/ to /
 
-from users.routers import reg_router
+from app.users.routers import reg_router
 
 app = FastAPI()  # starting a FatAPI app
 app.include_router(reg_router)
